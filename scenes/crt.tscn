@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://assets/material/CRTMat.tres" type="CanvasItemMaterial" id=1]
+[ext_resource path="res://assets/textures/white.png" type="Texture" id=2]
+
+[node name="CRT" type="TextureFrame"]
+
+material/material = ExtResource( 1 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -640.0
+margin/top = -362.0
+margin/right = 640.0
+margin/bottom = 358.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+
+

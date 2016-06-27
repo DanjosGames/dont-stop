@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://assets/textures/rauschen.res" type="SpriteFrames" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "static_anim"
+length = 0.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3, 4 ] }
+
+[node name="static" type="AnimatedSprite"]
+
+visibility/opacity = 0.2
+transform/scale = Vector2( 1.25, 1 )
+frames = ExtResource( 1 )
+animation = "default"
+frame = 4
+centered = false
+
+[node name="static_anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/static_anim = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "static_anim"
+
+

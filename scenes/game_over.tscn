@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://assets/font/prstart_48.fnt" type="BitmapFont" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[node name="game_over" type="Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
+custom_styles/panelf = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
+custom_styles/panelnc = SubResource( 3 )
+
+[node name="restart" type="Label" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+margin/left = 216.0
+margin/top = 0.0
+margin/right = -216.0
+margin/bottom = -48.0
+custom_fonts/font = ExtResource( 1 )
+text = "game over"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
