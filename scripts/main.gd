@@ -1,11 +1,8 @@
-
 extends Control
 
 var delta_counter = 0
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_node("bg/hScoreLabel/hscore").set_text(str(global.highscore))
 	get_node("run").grab_focus()

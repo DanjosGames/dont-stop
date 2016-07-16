@@ -20,7 +20,6 @@
 resource/name = "title_anim"
 length = 0.6
 loop = false
-loop_interpolation = false
 step = 0.02
 tracks/0/type = "value"
 tracks/0/path = NodePath("dontstop:visibility/visible")
@@ -48,7 +47,6 @@ tracks/3/keys = { "times":FloatArray( 0, 0.05, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5 ), 
 resource/name = "title_anim_dist1"
 length = 1.0
 loop = false
-loop_interpolation = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("dontstop:visibility/visible")
@@ -66,7 +64,6 @@ tracks/1/keys = { "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 )
 resource/name = "title_anim_dist2"
 length = 1.0
 loop = true
-loop_interpolation = false
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("dontstop:visibility/visible")
@@ -312,12 +309,12 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 2.0
 
-[connection signal="pressed" from="run" to="." method="_on_run_pressed"]
-
 [connection signal="focus_exit" from="run" to="." method="_on_focus_exit"]
 
-[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="run" to="." method="_on_run_pressed"]
 
 [connection signal="focus_exit" from="quit" to="." method="_on_focus_exit"]
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 
 

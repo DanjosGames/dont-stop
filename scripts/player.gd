@@ -1,4 +1,3 @@
-
 extends KinematicBody2D
 
 const MOVE_SPEED = 450

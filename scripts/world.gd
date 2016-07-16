@@ -16,9 +16,7 @@ func _ready():
 	current_section.connect("next_section", self, "_on_next_section", [], CONNECT_ONESHOT)
 
 func _on_next_section():
-	print("_on_next_section")
 	var new_section = section_scenes[randi()%6].instance()
-#	var new_section = section_scenes[6].instance()
 	new_section.set_pos(Vector2(current_section.get_pos().x+1280, current_section.get_pos().y))
 	if current_section.is_connected("next_section", self, "_on_next_section"):
 		current_section.disconnect("next_section", self, "_on_next_section")

@@ -71,9 +71,6 @@ func _process(time):
 
 func update_progress():
 	var progress = float(loader.get_stage()) / loader.get_stage_count()
-	# update your progress bar?
-#	get_node("progress").set_progress(progress)
-	# or update a progress animation?
 	var len = get_node("animation").get_current_animation_length()
 	# call this on a paused animation. use "true" as the second parameter to force the animation to update
 	get_node("animation").seek(progress * len, true)
