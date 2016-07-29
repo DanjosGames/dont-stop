@@ -1,14 +1,17 @@
 
 extends Panel
 
-var vol = 100
+var vol = 0
 
 func _ready():
+	vol = global.get_settings()["volume"]
+	get_node("Volume/Value").set_text(str(vol))
 	get_node("Volume/Lower").grab_focus()
 	set_process_input(true)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
+		global.save_settings({"volume" : vol})
 		global.goto_scene("res://scenes/main_menu.tscn")
 
 func _on_Lower_pressed():

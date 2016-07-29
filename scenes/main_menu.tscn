@@ -118,8 +118,6 @@ script/script = ExtResource( 1 )
 
 [node name="bg" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="dontstop" type="Sprite" parent="bg"]
 
 transform/pos = Vector2( 640, 128 )

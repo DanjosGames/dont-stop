@@ -5,31 +5,45 @@ var wait_frames
 var time_max = 100 # msec
 var current_scene = null
 
-var highscore_file = null
-var highscore = 0
+#var highscore_file = null
+#var highscore = 0
+
+var config_file = null
+var config = {}
 
 func _ready():
-	read_highscore()
+	_read_config()
+#	read_highscore()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 
-func save_highscore(new_highscore):
-	highscore = new_highscore
-	highscore_file = File.new()
-	highscore_file.open("user://highscore", highscore_file.WRITE)
-	highscore_file.store_var(highscore)
-	highscore_file.close()
-	highscore_file = null
+func _read_config():
+	config_file = ConfigFile.new()
+	config_file.load("user://file0")
+	config["progress/highscore"] = config_file.get_value("progress", "highscore", 0)
+	config["settings/volume"] = config_file.get_value("settings", "volume", 100)
 
-func read_highscore():
-	highscore_file = File.new()
-	if highscore_file.file_exists("user://highscore"):
-		highscore_file.open("user://highscore", highscore_file.READ)
-		highscore = highscore_file.get_var()
-		highscore_file.close()
-		highscore_file = null
-	else:
-		highscore = 0
+func _save_config():
+	config_file = ConfigFile.new()
+	config_file.load("user://file0")
+	for key in config.keys():
+		config_file.set_value(key.split("/")[0], key.split("/")[1], config[key])
+	config_file.save("user://file0")
+
+func save_highscore(new_highscore):
+	config["progress/highscore"] = new_highscore
+	_save_config()
+
+func get_highscore():
+	return config["progress/highscore"]
+
+func get_settings():
+	return {"volume" : config["settings/volume"]}
+
+func save_settings(new_settings):
+	for key in new_settings.keys():
+		config["settings/"+key] = new_settings[key]
+	_save_config()
 
 func goto_scene(path): # game requests to switch to this scene
 	loader = ResourceLoader.load_interactive(path)
