@@ -3,12 +3,11 @@ Do you have the skills needed to master this ruthless endless runner? Time your 
 Well, just see for yourself..
 
 ---
-This is the Game Jam Version, new versions will be released after the jam has ended.
 
 ## Installation:
 #### from source
-1. You need Godot 2.1, either build it yourself or download from [fixnum.org](http://fixnum.org/godot/)
-2. Extract the game, import and open the project
+1. You need Godot 2.1
+2. Clone or download, import and open the project
 3. Hit the play button
 4. Enjoy :)
 
@@ -20,10 +19,10 @@ Linux users make sure to set the executable flag.
 
 ## What's next?
 - [x] Releases for Windows, Linux, Mac
-- [ ] A "hidden" story
+- [x] Variable jump height
 - [ ] More challenging/rewarding level design
-- [ ] Variable jump height
 - [ ] Wall jump
 - [ ] Power ups
+- [ ] A "hidden" story
 - [ ] Release for Android
 

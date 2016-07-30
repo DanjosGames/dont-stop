@@ -31,5 +31,5 @@ func _on_countdown_finished():
 func _on_player_stopped():
 	game_over.show()
 	current_state = STATE_STOP
-	if int(player.current_score) > global.highscore:
+	if int(player.current_score) > global.get_highscore():
 		global.save_highscore(int(player.current_score))

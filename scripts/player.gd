@@ -1,14 +1,19 @@
 extends KinematicBody2D
 
-const MOVE_SPEED = 450
+var input_states = preload("res://scripts/input_state.gd")
+
+const MOVE_SPEED = 500
 const GRAVITY = 900
 const JUMP_HEIGHT = -800
+const MAX_JUMP_TIME = 0.35
 const STATE_GROUND = 0
 const STATE_JUMP = 1
-const MAX_JUMP_TIME = 0.35
+const STATE_AIR = 2
 
-var can_jump = true
 var jump_time = 0
+var jump = input_states.new("jump")
+var btn_jump = null
+
 var current_state = STATE_GROUND
 var next_state = STATE_GROUND
 var current_score = 0
@@ -25,31 +30,34 @@ func _ready():
 
 func _jump_state(delta):
 	jump_time += delta
-	if jump_time >= MAX_JUMP_TIME:
-		can_jump = false
-	else:
+	if btn_jump == 2 and not jump_time >= MAX_JUMP_TIME:
 		vel.y = JUMP_HEIGHT
+	else:
+		next_state = STATE_AIR
+
+func _air_state(delta):
+	vel.y = GRAVITY
+	if ray.is_colliding():
+		next_state = STATE_GROUND
 
 func _ground_state(delta):
-	if ray.is_colliding():
-		vel.y = 0
-		jump_time = 0
-		can_jump = true
-	else:
-		vel.y = GRAVITY
+	vel.y = 0
+	jump_time = 0
+	if btn_jump == 1:
+		next_state = STATE_JUMP
 
 func _fixed_process(delta):
+	btn_jump = jump.check()
 	current_state = next_state
 	vel.x = MOVE_SPEED
 
-	if can_jump && Input.is_action_pressed("jump"):
-		next_state = STATE_JUMP
-	else:
-		next_state = STATE_GROUND
 	if current_state == STATE_JUMP:
 		_jump_state(delta)
 	elif current_state == STATE_GROUND:
 		_ground_state(delta)
+	elif current_state == STATE_AIR:
+		_air_state(delta)
+
 	move(vel*delta)
 	if get_travel().x > 0:
 		current_score += get_travel().x/100

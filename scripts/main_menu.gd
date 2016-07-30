@@ -4,7 +4,7 @@ var delta_counter = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	get_node("bg/hScoreLabel/hscore").set_text(str(global.highscore))
+	get_node("bg/hScoreLabel/hscore").set_text(str(global.get_highscore()))
 	get_node("run").grab_focus()
 	randomize()
 	set_process(true)

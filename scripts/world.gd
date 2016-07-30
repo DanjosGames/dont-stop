@@ -2,16 +2,16 @@
 extends Node2D
 
 var section_scenes = {
-#	0 : preload("res://scenes/section.tscn"),
 	0 : preload("res://scenes/section_01.tscn"),
 	1 : preload("res://scenes/section_01b.tscn"),
 	2 : preload("res://scenes/section_02.tscn"),
 	3 : preload("res://scenes/section_02b.tscn"),
 	4 : preload("res://scenes/section_03.tscn"),
+	5 : preload("res://scenes/section_05.tscn"),
 #	6 : preload("res://scenes/section_04.tscn"),
 }
 
-var sections = _shuffleList([0, 1, 2, 3, 4])
+var sections = _shuffleList(section_scenes.keys())
 
 onready var current_section = get_child(1)
 
@@ -31,7 +31,7 @@ func _shuffleList(list):
 
 func _get_next_section():
 	if sections.empty():
-		sections = _shuffleList([0, 1, 2, 3, 4])
+		sections = _shuffleList(section_scenes.keys())
 	var next_section = section_scenes[sections[0]]
 	sections.pop_front()
 	return next_section
