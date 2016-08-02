@@ -8,7 +8,7 @@ var section_scenes = {
 	3 : preload("res://scenes/section_02b.tscn"),
 	4 : preload("res://scenes/section_03.tscn"),
 	5 : preload("res://scenes/section_05.tscn"),
-#	6 : preload("res://scenes/section_04.tscn"),
+	6 : preload("res://scenes/section_06.tscn"),
 }
 
 var sections = _shuffleList(section_scenes.keys())
