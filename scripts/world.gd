@@ -13,10 +13,11 @@ var section_scenes = {
 
 var sections = _shuffleList(section_scenes.keys())
 
-onready var current_section = get_child(1)
+onready var current_section = null
 
 func _ready():
-	current_section.connect("next_section", self, "_on_next_section", [], CONNECT_ONESHOT)
+	current_section = get_node("section")
+	_on_next_section()
 
 func _shuffleList(list):
     var shuffledList = []
