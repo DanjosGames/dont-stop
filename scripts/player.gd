@@ -44,6 +44,7 @@ func _ground_state(delta):
 	vel.y = 0
 	jump_time = 0
 	if btn_jump == 1:
+		get_node("SamplePlayer").play("jump")
 		next_state = STATE_JUMP
 
 func _fixed_process(delta):
