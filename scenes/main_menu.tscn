@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/dontstop.png" type="Texture" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://assets/font/prstart_48.fnt" type="BitmapFont" id=9]
 [ext_resource path="res://scenes/static.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/crt.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/sounds/TV_Static-Mike_Koenig-1287909192.ogg" type="AudioStream" id=12]
-[ext_resource path="res://assets/sounds/18536.wav" type="Sample" id=13]
-[ext_resource path="res://assets/sounds/20920.mp3.wav" type="Sample" id=14]
+[ext_resource path="res://scenes/tv_frame.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sounds/TV_Static-Mike_Koenig-1287909192.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sounds/18536.wav" type="Sample" id=14]
+[ext_resource path="res://assets/sounds/20920.mp3.wav" type="Sample" id=15]
 
 [sub_resource type="Animation" id=1]
 
@@ -97,8 +98,8 @@ content_margin/bottom = -1.0
 
 [sub_resource type="SampleLibrary" id=6]
 
-samples/menu_focus = { "db":0.0, "pitch":1.0, "sample":ExtResource( 13 ) }
-samples/tsch = { "db":0.0, "pitch":1.0, "sample":ExtResource( 14 ) }
+samples/menu_focus = { "db":0.0, "pitch":1.0, "sample":ExtResource( 14 ) }
+samples/tsch = { "db":0.0, "pitch":1.0, "sample":ExtResource( 15 ) }
 
 [node name="main" type="Control"]
 
@@ -307,9 +308,13 @@ margin/top = 0.0
 margin/right = 1280.0
 margin/bottom = 720.0
 
+[node name="tv" parent="." instance=ExtResource( 12 )]
+
+transform/pos = Vector2( -47, -3 )
+
 [node name="StreamPlayer" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 12 )
+stream/stream = ExtResource( 13 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
