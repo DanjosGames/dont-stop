@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scripts/section.gd" type="Script" id=1]
-[ext_resource path="res://scenes/wall_128.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/wall_64.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/wall_128.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -50,15 +51,19 @@ _update_shape_index = 0
 
 [node name="wall" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 448, 512 )
+transform/pos = Vector2( 384, 576 )
 
-[node name="wall1" parent="." instance=ExtResource( 2 )]
+[node name="wall1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 788, 512 )
 
+[node name="wall3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 997, 386 )
+
 [node name="wall2" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 1188, 512 )
+transform/pos = Vector2( 1189, 576 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
