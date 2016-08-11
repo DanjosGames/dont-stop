@@ -11,15 +11,16 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "values":[ 0, 1, 2, 3, 4 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ), "transitions":FloatArray( 1, 1, 1, 1, 1 ), "update":1, "values":[ 0, 1, 2, 3, 4 ] }
 
 [node name="static" type="AnimatedSprite"]
 
-visibility/opacity = 0.2
+visibility/opacity = 0.05
 transform/scale = Vector2( 1.25, 1 )
 frames = ExtResource( 1 )
 animation = "default"
-frame = 4
+frame = 3
 centered = false
 
 [node name="static_anim" type="AnimationPlayer" parent="."]

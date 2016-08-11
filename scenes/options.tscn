@@ -1,18 +1,19 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/options_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/prstart.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/static.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/crt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/tv_frame.tscn" type="PackedScene" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=2]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -34,7 +35,7 @@ margin/left = 640.0
 margin/top = 360.0
 margin/right = -640.0
 margin/bottom = -360.0
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 script/script = ExtResource( 1 )
 
 [node name="Volume" type="Node2D" parent="."]
@@ -89,7 +90,7 @@ margin/left = 0.0
 margin/top = 56.0
 margin/right = 60.0
 margin/bottom = 110.0
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 enabled_focus_mode = 2
@@ -109,7 +110,7 @@ margin/left = 222.0
 margin/top = 56.0
 margin/right = 282.0
 margin/bottom = 110.0
-custom_styles/normal = SubResource( 3 )
+custom_styles/normal = SubResource( 2 )
 custom_fonts/font = ExtResource( 2 )
 toggle_mode = false
 enabled_focus_mode = 2
@@ -125,6 +126,10 @@ margin/left = 0.0
 margin/top = 2.0
 margin/right = 1280.0
 margin/bottom = 722.0
+
+[node name="tv" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( -47, -3 )
 
 [connection signal="pressed" from="Volume/Lower" to="." method="_on_Lower_pressed"]
 

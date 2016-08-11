@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/world.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/game_over.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/static.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/crt.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/tv_frame.tscn" type="PackedScene" id=11]
 
 [node name="game" type="Node2D"]
 
@@ -65,10 +66,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -612.0
-margin/top = -335.0
-margin/right = -372.0
-margin/bottom = -287.0
+margin/left = -551.0
+margin/top = -281.0
+margin/right = -263.0
+margin/bottom = -233.0
 custom_fonts/font = ExtResource( 6 )
 text = "SCORE:"
 percent_visible = 1.0
@@ -81,10 +82,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -293.0
-margin/top = -335.0
-margin/right = -245.0
-margin/bottom = -287.0
+margin/left = -232.0
+margin/top = -281.0
+margin/right = -184.0
+margin/bottom = -233.0
 custom_fonts/font = ExtResource( 6 )
 text = "0"
 percent_visible = 1.0
@@ -111,5 +112,7 @@ margin/bottom = -688.0
 transform/pos = Vector2( -640, -384 )
 
 [node name="CRT" parent="Camera2D" instance=ExtResource( 10 )]
+
+[node name="tv" parent="Camera2D" instance=ExtResource( 11 )]
 
 

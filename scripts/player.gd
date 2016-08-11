@@ -4,8 +4,8 @@ var input_states = preload("res://scripts/input_state.gd")
 
 const MOVE_SPEED = 500
 const GRAVITY = 900
-const JUMP_HEIGHT = -800
-const MAX_JUMP_TIME = 0.35
+const JUMP_HEIGHT = -630
+const MAX_JUMP_TIME = 0.45
 const STATE_GROUND = 0
 const STATE_JUMP = 1
 const STATE_AIR = 2
@@ -44,6 +44,7 @@ func _ground_state(delta):
 	vel.y = 0
 	jump_time = 0
 	if btn_jump == 1:
+		get_node("SamplePlayer").play("jump")
 		next_state = STATE_JUMP
 
 func _fixed_process(delta):

@@ -4,16 +4,11 @@ var loader
 var wait_frames
 var time_max = 100 # msec
 var current_scene = null
-
-#var highscore_file = null
-#var highscore = 0
-
 var config_file = null
 var config = {}
 
 func _ready():
 	_read_config()
-#	read_highscore()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 
