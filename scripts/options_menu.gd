@@ -19,9 +19,13 @@ func _on_Lower_pressed():
 	if vol < 0:
 		vol = 0
 	get_node("Volume/Value").set_text(str(vol))
+	AudioServer.set_fx_global_volume_scale(vol/100.0)
+	AudioServer.set_stream_global_volume_scale(vol/100.0)
 
 func _on_Raise_pressed():
 	vol += 1
 	if vol > 100:
 		vol = 100
 	get_node("Volume/Value").set_text(str(vol))
+	AudioServer.set_fx_global_volume_scale(vol/100.0)
+	AudioServer.set_stream_global_volume_scale(vol/100.0)
