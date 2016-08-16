@@ -327,7 +327,7 @@ stream/buffering_ms = 500
 
 config/polyphony = 3
 config/samples = SubResource( 6 )
-default/volume_db = 0.0
+default/volume_db = 3.0
 default/pitch_scale = 1.0
 default/pan = 0.0
 default/depth = 0.0
@@ -340,13 +340,9 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 2.0
 
-[connection signal="focus_exit" from="run" to="." method="_on_focus_exit"]
-
 [connection signal="pressed" from="run" to="." method="_on_run_pressed"]
 
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
-
-[connection signal="focus_exit" from="quit" to="." method="_on_focus_exit"]
 
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 
