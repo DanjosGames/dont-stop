@@ -17,6 +17,8 @@ func _read_config():
 	config_file.load("user://file0")
 	config["progress/highscore"] = config_file.get_value("progress", "highscore", 0)
 	config["settings/volume"] = config_file.get_value("settings", "volume", 100)
+	AudioServer.set_fx_global_volume_scale(config["settings/volume"]/100.0)
+	AudioServer.set_stream_global_volume_scale(config["settings/volume"]/100.0)
 
 func _save_config():
 	config_file = ConfigFile.new()
