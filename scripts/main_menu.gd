@@ -8,6 +8,11 @@ func _ready():
 	get_node("run").grab_focus()
 	randomize()
 	set_process(true)
+	set_process_input(true)
+
+func _input(event):
+	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
+		get_node("SamplePlayer").play("menu_focus")
 
 func _process(delta):
 	delta_counter += delta
