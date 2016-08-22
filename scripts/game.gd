@@ -22,9 +22,10 @@ func _input(event):
 			current_state = STATE_RUNNING
 			get_node("Camera2D/get_ready/AnimationPlayer").play("go")
 		elif current_state == STATE_STOP:
-			if global.player_lives > 1:
+			if global.player_lives > 0:
 				global.goto_scene("res://scenes/game.tscn")
 			else:
+				global.save_highscore()
 				global.goto_scene("res://scenes/main_menu.tscn")
 	elif event.type == InputEvent.KEY && event.scancode == KEY_ESCAPE && event.is_pressed() && !event.is_echo():
 		global.goto_scene("res://scenes/main.tscn")
@@ -36,10 +37,11 @@ func _on_countdown_finished():
 func _on_player_stopped():
 	global.player_lives -= 1
 	global.current_run_score += int(player.current_score)
-	if int(player.current_score) > global.get_highscore():
-		global.save_highscore(int(player.current_score))
+	if int(player.current_score) > global.current_run_highscore:
+		global.current_run_highscore = int(player.current_score)
 	if global.player_lives < 1:
 		game_over.show()
 	else:
+		retry.get_node("text").set_text("retry? (" + str(global.player_lives) + " left)")
 		retry.show()
 	current_state = STATE_STOP

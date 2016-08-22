@@ -8,6 +8,8 @@ var config_file = null
 var config = {}
 var player_lives = 10
 var current_run_score = 0
+var current_run_highscore = 0
+var local_scoreboard = []
 
 func _ready():
 	_read_config()
@@ -18,6 +20,7 @@ func _read_config():
 	config_file = ConfigFile.new()
 	config_file.load("user://file0")
 	config["progress/highscore"] = config_file.get_value("progress", "highscore", 0)
+	config["progress/best_run"] = config_file.get_value("progress", "best_run", 0)
 	config["settings/volume"] = config_file.get_value("settings", "volume", 100)
 	AudioServer.set_fx_global_volume_scale(config["settings/volume"]/100.0)
 	AudioServer.set_stream_global_volume_scale(config["settings/volume"]/100.0)
@@ -29,9 +32,15 @@ func _save_config():
 		config_file.set_value(key.split("/")[0], key.split("/")[1], config[key])
 	config_file.save("user://file0")
 
-func save_highscore(new_highscore):
-	config["progress/highscore"] = new_highscore
+func save_highscore():
+	if current_run_highscore > config["progress/highscore"]:
+		config["progress/highscore"] = current_run_highscore
+	if current_run_highscore > config["progress/best_run"]:
+		config["progress/best_run"] = current_run_score
 	_save_config()
+
+func sort_scoreboard(a, b):
+	return a[1] > b[1]
 
 func get_highscore():
 	return config["progress/highscore"]
