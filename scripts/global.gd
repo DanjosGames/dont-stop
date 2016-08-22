@@ -6,6 +6,8 @@ var time_max = 100 # msec
 var current_scene = null
 var config_file = null
 var config = {}
+var player_lives = 10
+var current_run_score = 0
 
 func _ready():
 	_read_config()
