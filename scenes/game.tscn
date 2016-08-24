@@ -83,6 +83,22 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="LabelTotal" type="Label" parent="Camera2D/hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -551.0
+margin/top = -217.0
+margin/right = -263.0
+margin/bottom = -169.0
+custom_fonts/font = ExtResource( 6 )
+text = "TOTAL:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="score" type="Label" parent="Camera2D/hud"]
 
 focus/ignore_mouse = true
@@ -93,6 +109,22 @@ margin/left = -232.0
 margin/top = -281.0
 margin/right = -184.0
 margin/bottom = -233.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="total" type="Label" parent="Camera2D/hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -232.0
+margin/top = -217.0
+margin/right = -184.0
+margin/bottom = -169.0
 custom_fonts/font = ExtResource( 6 )
 text = "0"
 percent_visible = 1.0
