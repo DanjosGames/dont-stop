@@ -53,6 +53,11 @@ func save_settings(new_settings):
 		config["settings/"+key] = new_settings[key]
 	_save_config()
 
+func reset_run():
+	player_lives = 10
+	current_run_highscore = 0
+	current_run_score = 0
+
 func goto_scene(path): # game requests to switch to this scene
 	loader = ResourceLoader.load_interactive(path)
 	if loader == null: # check for errors

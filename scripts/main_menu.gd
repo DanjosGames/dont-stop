@@ -31,6 +31,7 @@ func _process(delta):
 
 
 func _on_run_pressed():
+	global.reset_run()
 	global.goto_scene("res://scenes/game.tscn")
 
 func _on_quit_pressed():
