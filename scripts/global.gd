@@ -56,6 +56,7 @@ func save_highscore():
 	if local_scoreboard.size() == 10:
 		local_scoreboard.remove(9)
 	local_scoreboard.append([player_name, current_run_score])
+	local_scoreboard.sort_custom(self, "_sort_scoreboard")
 	_save_scoreboard()
 
 func _sort_scoreboard(a, b):
