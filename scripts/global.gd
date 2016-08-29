@@ -82,7 +82,7 @@ func save_settings(new_settings):
 
 func reset_run():
 	player_name = ""
-	player_lives = 1
+	player_lives = 10
 	current_run_highscore = 0
 	current_run_score = 0
 
