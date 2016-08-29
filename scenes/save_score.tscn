@@ -1,10 +1,31 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scripts/save_score.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/prstart.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/static.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/crt.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/tv_frame.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [node name="Control" type="Control"]
 
@@ -28,9 +49,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 222.0
+margin/left = 180.0
 margin/top = 299.0
-margin/right = -1052.0
+margin/right = -1048.0
 margin/bottom = -409.0
 alignment = 0
 
@@ -42,8 +63,9 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 586.0
+margin/right = 576.0
 margin/bottom = 110.0
+custom_constants/separation = 10
 alignment = 0
 
 [node name="name_label" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -54,10 +76,10 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 586.0
+margin/right = 576.0
 margin/bottom = 48.0
 custom_fonts/font = ExtResource( 2 )
-text = "NAME"
+text = "NAME:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -69,9 +91,12 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 52.0
-margin/right = 586.0
-margin/bottom = 110.0
+margin/top = 58.0
+margin/right = 576.0
+margin/bottom = 106.0
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 placeholder/alpha = 0.6
 max_length = 5
@@ -85,10 +110,11 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 590.0
+margin/left = 580.0
 margin/top = 0.0
-margin/right = 830.0
+margin/right = 868.0
 margin/bottom = 110.0
+custom_constants/separation = 10
 alignment = 0
 
 [node name="score_label" type="Label" parent="VBoxContainer/HBoxContainer 2"]
@@ -99,10 +125,10 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 240.0
+margin/right = 288.0
 margin/bottom = 48.0
 custom_fonts/font = ExtResource( 2 )
-text = "SCORE"
+text = "SCORE:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -114,9 +140,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
-margin/top = 52.0
-margin/right = 240.0
-margin/bottom = 100.0
+margin/top = 58.0
+margin/right = 288.0
+margin/bottom = 106.0
 custom_fonts/font = ExtResource( 2 )
 text = "50000"
 percent_visible = 1.0
