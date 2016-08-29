@@ -25,7 +25,10 @@ func _input(event):
 			if global.player_lives > 0:
 				global.goto_scene("res://scenes/game.tscn")
 			else:
-				global.goto_scene("res://scenes/save_score.tscn")
+				if global.store_in_board():
+					global.goto_scene("res://scenes/save_score.tscn")
+				else:
+					global.goto_scene("res://scenes/main_menu.tscn")
 	elif event.type == InputEvent.KEY && event.scancode == KEY_ESCAPE && event.is_pressed() && !event.is_echo():
 		global.goto_scene("res://scenes/main.tscn")
 

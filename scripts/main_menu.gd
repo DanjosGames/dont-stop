@@ -42,3 +42,7 @@ func _on_focus_exit():
 
 func _on_options_pressed():
 	global.goto_scene("res://scenes/options.tscn")
+
+
+func _on_highscores_pressed():
+	global.goto_scene("res://scenes/scoreboard.tscn")

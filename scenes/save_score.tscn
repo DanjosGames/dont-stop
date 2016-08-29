@@ -74,6 +74,7 @@ margin/right = 586.0
 margin/bottom = 110.0
 custom_fonts/font = ExtResource( 2 )
 placeholder/alpha = 0.6
+max_length = 5
 focus_mode = 2
 caret/caret_blink = true
 caret/caret_blink_speed = 0.65
