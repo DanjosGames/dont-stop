@@ -6,9 +6,16 @@ var time_max = 100 # msec
 var current_scene = null
 var config_file = null
 var config = {}
+var player_name = null
+var player_lives = 10
+var current_run_score = 0
+var current_run_highscore = 0
+var scoreboard_file = null
+var local_scoreboard = []
 
 func _ready():
 	_read_config()
+	_read_scoreboard()
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
 
@@ -16,7 +23,22 @@ func _read_config():
 	config_file = ConfigFile.new()
 	config_file.load("user://file0")
 	config["progress/highscore"] = config_file.get_value("progress", "highscore", 0)
+	config["progress/best_run"] = config_file.get_value("progress", "best_run", 0)
 	config["settings/volume"] = config_file.get_value("settings", "volume", 100)
+	AudioServer.set_fx_global_volume_scale(config["settings/volume"]/100.0)
+	AudioServer.set_stream_global_volume_scale(config["settings/volume"]/100.0)
+
+func _read_scoreboard():
+	scoreboard_file = File.new()
+	if scoreboard_file.open("user://file1", scoreboard_file.READ) == OK:
+		local_scoreboard = scoreboard_file.get_var()
+		local_scoreboard.sort_custom(self, "_sort_scoreboard")
+	scoreboard_file = null
+
+func _save_scoreboard():
+	scoreboard_file = File.new()
+	if scoreboard_file.open("user://file1", scoreboard_file.WRITE) == OK:
+		scoreboard_file.store_var(local_scoreboard)
 
 func _save_config():
 	config_file = ConfigFile.new()
@@ -25,9 +47,28 @@ func _save_config():
 		config_file.set_value(key.split("/")[0], key.split("/")[1], config[key])
 	config_file.save("user://file0")
 
-func save_highscore(new_highscore):
-	config["progress/highscore"] = new_highscore
+func save_highscore():
+	if current_run_highscore > config["progress/highscore"]:
+		config["progress/highscore"] = current_run_highscore
+	if current_run_highscore > config["progress/best_run"]:
+		config["progress/best_run"] = current_run_score
 	_save_config()
+	if local_scoreboard.size() == 10:
+		local_scoreboard.remove(9)
+	local_scoreboard.append([player_name, current_run_score])
+	local_scoreboard.sort_custom(self, "_sort_scoreboard")
+	_save_scoreboard()
+
+func _sort_scoreboard(a, b):
+	return a[1] > b[1]
+
+func store_in_board():
+	if local_scoreboard.size() == 10:
+		if current_run_score > local_scoreboard[9][1]:
+			return true
+		else:
+			return false
+	return true
 
 func get_highscore():
 	return config["progress/highscore"]
@@ -39,6 +80,12 @@ func save_settings(new_settings):
 	for key in new_settings.keys():
 		config["settings/"+key] = new_settings[key]
 	_save_config()
+
+func reset_run():
+	player_name = ""
+	player_lives = 10
+	current_run_highscore = 0
+	current_run_score = 0
 
 func goto_scene(path): # game requests to switch to this scene
 	loader = ResourceLoader.load_interactive(path)

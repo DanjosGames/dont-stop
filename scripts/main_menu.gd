@@ -8,6 +8,11 @@ func _ready():
 	get_node("run").grab_focus()
 	randomize()
 	set_process(true)
+	set_process_input(true)
+
+func _input(event):
+	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
+		get_node("SamplePlayer").play("menu_focus")
 
 func _process(delta):
 	delta_counter += delta
@@ -26,6 +31,7 @@ func _process(delta):
 
 
 func _on_run_pressed():
+	global.reset_run()
 	global.goto_scene("res://scenes/game.tscn")
 
 func _on_quit_pressed():
@@ -36,3 +42,7 @@ func _on_focus_exit():
 
 func _on_options_pressed():
 	global.goto_scene("res://scenes/options.tscn")
+
+
+func _on_highscores_pressed():
+	global.goto_scene("res://scenes/scoreboard.tscn")

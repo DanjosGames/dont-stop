@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/world.tscn" type="PackedScene" id=2]
@@ -11,6 +11,13 @@
 [ext_resource path="res://scenes/static.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/crt.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/tv_frame.tscn" type="PackedScene" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [node name="game" type="Node2D"]
 
@@ -76,6 +83,22 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="LabelTotal" type="Label" parent="Camera2D/hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -551.0
+margin/top = -217.0
+margin/right = -263.0
+margin/bottom = -169.0
+custom_fonts/font = ExtResource( 6 )
+text = "TOTAL:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="score" type="Label" parent="Camera2D/hud"]
 
 focus/ignore_mouse = true
@@ -92,12 +115,62 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="total" type="Label" parent="Camera2D/hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -232.0
+margin/top = -217.0
+margin/right = -184.0
+margin/bottom = -169.0
+custom_fonts/font = ExtResource( 6 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="get_ready" parent="Camera2D" instance=ExtResource( 7 )]
 
 margin/left = 96.0
 margin/top = 56.0
 margin/right = 56.0
 margin/bottom = 16.0
+
+[node name="retry" type="Panel" parent="Camera2D"]
+
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -640.0
+margin/top = -364.0
+margin/right = 640.0
+margin/bottom = 356.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="text" type="Label" parent="Camera2D/retry"]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 345.0
+margin/top = 24.0
+margin/right = -423.0
+margin/bottom = -24.0
+custom_fonts/font = ExtResource( 6 )
+text = "retry\? (10 left)"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [node name="game_over" parent="Camera2D" instance=ExtResource( 8 )]
 

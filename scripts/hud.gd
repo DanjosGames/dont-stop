@@ -9,3 +9,4 @@ func _ready():
 
 func _process(delta):
 	get_node("score").set_text(str(int(player.current_score)))
+	get_node("total").set_text(str(int(global.current_run_score)))
